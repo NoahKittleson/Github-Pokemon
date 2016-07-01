@@ -3,6 +3,7 @@ package com.epicodus.wordgame;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,5 +23,7 @@ public class ScoreActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         words = (ArrayList<String>) intent.getSerializableExtra("submittedWords");
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, words);
+        mWordList.setAdapter(adapter);
     }
 }
