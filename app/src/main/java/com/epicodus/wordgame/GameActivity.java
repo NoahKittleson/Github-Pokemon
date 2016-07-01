@@ -18,14 +18,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.letterGrid) GridView mLetterGrid;
     @Bind(R.id.submitButton) Button mSubmitButton;
     @Bind(R.id.textView) TextView mTextView;
+    @Bind(R.id.scoreButton) Button mScoreButton;
     private Character[] letters = new Character[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
-    private ArrayList<String> submittedWords= new ArrayList<String> ();
+    private ArrayList<String> submittedWords= new ArrayList<> ();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
+        mSubmitButton.setOnClickListener(this);
+        mScoreButton.setOnClickListener(this);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, letters);
         mLetterGrid.setAdapter(adapter);
@@ -37,7 +40,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             String word = mTextView.getText().toString();
             submittedWords.add(word);
         } else if (v == mScoreButton) {
-
+            Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
+//            for(String word : submittedWords) {
+//                intent.putExtra("");
+//            }
+            intent.putExtra("submittedWords", submittedWords);
+            startActivity(intent);
         }
     }
 }
