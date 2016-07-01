@@ -17,10 +17,10 @@ import butterknife.ButterKnife;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.letterGrid) GridView mLetterGrid;
     @Bind(R.id.submitButton) Button mSubmitButton;
-    @Bind(R.id.textView) TextView mTextView;
+    @Bind(R.id.editText) TextView mTextView;
     @Bind(R.id.scoreButton) Button mScoreButton;
     private Character[] letters = new Character[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
-    private ArrayList<String> submittedWords= new ArrayList<> ();
+    private ArrayList<String> submittedWords = new ArrayList<String> ();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +39,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mSubmitButton) {
             String word = mTextView.getText().toString();
             submittedWords.add(word);
-        } else if (v == mScoreButton) {
+        }
+        else if (v == mScoreButton) {
             Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
-//            for(String word : submittedWords) {
-//                intent.putExtra("");
-//            }
             intent.putExtra("submittedWords", submittedWords);
             startActivity(intent);
         }
