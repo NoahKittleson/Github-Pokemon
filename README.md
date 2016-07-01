@@ -1,34 +1,35 @@
-# Word Game
-## Created By Noah Kittleson
+#**Word Game**
+#### Created By Noah Kittleson
 
-## Description
+##**Description**
 
 Android Game App about taking randomly generated characters and making words from them.
 
-## Disclaimer
+##**Disclaimer**
 _We do not own the images used in this web app._
 _We own no copyrighted or trademarked material herein._
 _All rights belong to their respective owners._
 
 
-## Prerequisites
+##**Prerequisites**
 
 You will need the following things properly installed on your computer.
 
 * [Git](http://git-scm.com/)
 * [Android Studio] (https://developer.android.com/studio/index.html)
 
-## Technologies Used 
+##**Technologies Used**
 * Java
 * XML
+* Android Visual Studio
 * Gradle
 
 
-## Installation
+##**Installation**
 
 Clone the github repository and open it in Android Studio.  You may either run it through an emulator here or transfer it onto your android device and run it locally there.
 
-### License
+###**License**
 
 The MIT License (MIT)
 
