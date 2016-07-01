@@ -39,7 +39,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Score"
+        android:text="View Words"
         android:id="@+id/scoreButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mSubmitButton) {
             String word = mTextView.getText().toString();
+            mTextView.setText("");
             submittedWords.add(word);
         }
         else if (v == mScoreButton) {
