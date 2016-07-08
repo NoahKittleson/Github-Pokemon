@@ -17,11 +17,11 @@ import okhttp3.Response;
  * Created by noahkittleson on 7/8/16.
  */
 public class GithubService {
-    public static void findRepos(String word, int page, Callback callback) {
+    public static void findRepos(String user, int page, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder().build();
         String pageNo = page + "";
-        String url = "https://api.github.com/users/" + word + "/repos?api_key=" + Constants.apiKey + "&page=" + pageNo + "&per_page=20";
+        String url = "https://api.github.com/users/" + user + "/repos?api_key=" + Constants.apiKey + "&page=" + pageNo + "&per_page=20";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -43,15 +43,12 @@ public class GithubService {
 
                 for (int i = 0; i < JSONresults.length(); i++) {
                     JSONObject currentRepo = JSONresults.getJSONObject(i);
-//                    String title = filmJSON.getString("title");
-//                    String date = filmJSON.getString("release_date");
-//                    String year = date.substring(0, 4);
-//                    int id = filmJSON.getInt("id");
-//                    double rating = filmJSON.getDouble("vote_average");
-//                    String synopsis = filmJSON.getString("overview");
-//                    String poster = filmJSON.getString("poster_path");
+                    String name = currentRepo.getString("name");
+                    int size = currentRepo.getInt("size");
+                    String languagePrimary = currentRepo.getString("language");
+                    //secondaryLanguage eventually....
 
-                    Repo repo = new Repo(/*whatever info I need*/);
+                    Repo repo = new Repo(name, size, languagePrimary, "");
                     repos.add(repo);
                 }
             }

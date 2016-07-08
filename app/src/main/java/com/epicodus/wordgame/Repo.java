@@ -5,24 +5,33 @@ package com.epicodus.wordgame;
  */
 public class Repo {
     private String mName;
-    private int size;
-    private String languagePrimary;
-    private String languageSecondary;
+    private int mSize;
+    private String mLangPrimary;
+    private String mLangSecondary;
 
-    public String getLanguageSecondary() {
-        return languageSecondary;
+    public Repo () {}
+
+    public Repo (String name, int size, String lang1, String lang2) {
+        this.mName = name;
+        this.mSize = size;
+        this.mLangPrimary = lang1;
+        this.mLangSecondary = lang2;
     }
 
-    public String getmName() {
+    public String getLanguageTwo() {
+        return mLangSecondary;
+    }
+
+    public String getName() {
         return mName;
     }
 
     public int getSize() {
-        return size;
+        return mSize;
     }
 
-    public String getLanguagePrimary() {
-        return languagePrimary;
+    public String getLanguageOne() {
+        return mLangPrimary;
     }
 
 
