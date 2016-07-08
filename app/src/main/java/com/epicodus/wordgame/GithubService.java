@@ -1,4 +1,6 @@
 package com.epicodus.wordgame;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,10 +38,11 @@ public class GithubService {
 
         try {
             String jsonData = response.body().string();
+            Log.d("GITHUBSERVICE1", jsonData);
 
             if (response.isSuccessful()) {
-                JSONObject totalJSON = new JSONObject(jsonData);
-                JSONArray JSONresults = totalJSON.getJSONArray("");
+                JSONArray JSONresults = new JSONArray(jsonData);
+
 
                 for (int i = 0; i < JSONresults.length(); i++) {
                     JSONObject currentRepo = JSONresults.getJSONObject(i);
