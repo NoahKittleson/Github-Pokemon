@@ -53,13 +53,13 @@ public class RepoDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_repo_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mRepo.getImageUrl()).into(mImageLabel);
+        //Picasso.with(view.getContext()).load(mRepo.getImageUrl()).into(mImageLabel);
 
         mNameLabel.setText(mRepo.getName());
-        mCategoriesLabel.setText(android.text.TextUtils.join(", ", mRepo.getCategories()));
-        mRatingLabel.setText(Double.toString(mRepo.getRating()) + "/5");
-        mPhoneLabel.setText(mRepo.getPhone());
-        mAddressLabel.setText(android.text.TextUtils.join(", ", mRepo.getAddress()));
+        mCategoriesLabel.setText(mRepo.getLanguageOne());
+        mRatingLabel.setText(Double.toString(mRepo.getSize()));
+        //mPhoneLabel.setText(mRepo.getPhone());
+        //mAddressLabel.setText(android.text.TextUtils.join(", ", mRepo.getAddress()));
 
         return view;
     }
