@@ -3,6 +3,8 @@ package com.epicodus.wordgame;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,13 +21,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.letterGrid) GridView mLetterGrid;
-    @Bind(R.id.submitButton) Button mSubmitButton;
-    @Bind(R.id.editText) TextView mTextView;
-    @Bind(R.id.scoreButton) Button mScoreButton;
-    private String[] names = new String[20];
-    private ArrayList<String> submittedWords = new ArrayList<String> ();
+public class GameActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private RepoListAdapter mAdapter;
     public ArrayList<Repo> mRepos = new ArrayList<>();
 
     void getRepos (String username) {
@@ -50,6 +48,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         Log.d("Game Activity: ", "got to RUN");
+                        mAdapter = new RepoListAdapter(getApplicationContext(), mRepos);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GameActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
@@ -63,28 +66,23 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
-        mSubmitButton.setOnClickListener(this);
-        mScoreButton.setOnClickListener(this);
 
-        //Intent intent = getIntent();
-        //String username = intent.getStringExtra("username");
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
         getRepos("noahkittleson");
-
-        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, names);
-        //mLetterGrid.setAdapter(adapter);
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == mSubmitButton) {
-            String word = mTextView.getText().toString();
-            mTextView.setText("");
-            submittedWords.add(word);
-        }
-        else if (v == mScoreButton) {
-            Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
-            intent.putExtra("submittedWords", submittedWords);
-            startActivity(intent);
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        if (v == mSubmitButton) {
+//            String word = mTextView.getText().toString();
+//            mTextView.setText("");
+//            submittedWords.add(word);
+//        }
+//        else if (v == mScoreButton) {
+//            Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
+//            intent.putExtra("submittedWords", submittedWords);
+//            startActivity(intent);
+//        }
+//    }
 }

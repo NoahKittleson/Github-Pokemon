@@ -3,6 +3,10 @@ package com.epicodus.wordgame;
 /**
  * Created by noahkittleson on 7/8/16.
  */
+
+import org.parceler.Parcel;
+
+@Parcel
 public class Repo {
     private String mName;
     private int mSize;
