@@ -1,12 +1,15 @@
 package com.epicodus.wordgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -42,7 +45,7 @@ public class RepoListAdapter extends RecyclerView.Adapter<RepoListAdapter.RepoVi
         return mRepos.size();
     }
 
-    public class RepoViewHolder extends RecyclerView.ViewHolder {
+    public class RepoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.repoImageView) ImageView mImageTextView;
         @Bind(R.id.repoNameTextView) TextView mNameTextView;
         @Bind(R.id.languageTextView) TextView mLanguageTextView;
@@ -54,12 +57,22 @@ public class RepoListAdapter extends RecyclerView.Adapter<RepoListAdapter.RepoVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void bindRepo(Repo repo) {
             mNameTextView.setText(repo.getName());
             mLanguageTextView.setText(repo.getLanguageOne());
             mSizeTextView.setText("Size: " + repo.getSize());
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, RepoDetailActivity.class);
+            intent.putExtra("position", itemPosition + "");
+            intent.putExtra("repos", Parcels.wrap(mRepos));
+            mContext.startActivity(intent);
         }
     }
 }
