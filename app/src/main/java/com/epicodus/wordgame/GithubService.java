@@ -6,7 +6,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -38,7 +37,6 @@ public class GithubService {
 
         try {
             String jsonData = response.body().string();
-            Log.d("GITHUBSERVICE1", jsonData);
 
             if (response.isSuccessful()) {
                 JSONArray JSONresults = new JSONArray(jsonData);

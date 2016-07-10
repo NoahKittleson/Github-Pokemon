@@ -24,7 +24,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.submitButton) Button mSubmitButton;
     @Bind(R.id.editText) TextView mTextView;
     @Bind(R.id.scoreButton) Button mScoreButton;
-    private Character[] letters = new Character[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
+    private String[] names = new String[20];
     private ArrayList<String> submittedWords = new ArrayList<String> ();
     public ArrayList<Repo> mRepos = new ArrayList<>();
 
@@ -49,9 +49,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void run() {
-
+                        Log.d("Game Activity: ", "got to RUN");
                     }
-
                 });
             }
         });
@@ -67,12 +66,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mSubmitButton.setOnClickListener(this);
         mScoreButton.setOnClickListener(this);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, letters);
-        mLetterGrid.setAdapter(adapter);
-
         //Intent intent = getIntent();
         //String username = intent.getStringExtra("username");
         getRepos("noahkittleson");
+
+        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, names);
+        //mLetterGrid.setAdapter(adapter);
     }
 
     @Override
