@@ -71,7 +71,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_above="@+id/saveRestaurantButton"
+                android:layout_above="@+id/saveRepoButton"
                 android:paddingLeft="30dp"
                 android:paddingTop="20dp"
                 android:paddingRight="30dp">
@@ -117,8 +117,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Restaurant"
-                android:id="@+id/saveRestaurantButton"
+                android:text="Save Repo"
+                android:id="@+id/saveRepoButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
                 android:textColor="@color/colorPrimary"

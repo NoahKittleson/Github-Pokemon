@@ -56,10 +56,6 @@ public class RepoDetailFragment extends Fragment {
 
         //Picasso.with(view.getContext()).load(mRepo.getImageUrl()).into(mImageLabel);
 
-        Log.d("RepoDetailFragment", mRepo.getName());
-        Log.d("RepoDetailFragment", mRepo.getLanguageOne());
-        Log.d("RepoDetailFragment", mRepo.getSize() + "");
-
         mNameLabel.setText(mRepo.getName());
         mLanguageLabel.setText(mRepo.getLanguageOne());
         mSizeLabel.setText(Double.toString(mRepo.getSize()));
