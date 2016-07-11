@@ -3,6 +3,7 @@ package com.epicodus.wordgame;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,10 @@ public class RepoDetailFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         //Picasso.with(view.getContext()).load(mRepo.getImageUrl()).into(mImageLabel);
+
+        Log.d("RepoDetailFragment", mRepo.getName());
+        Log.d("RepoDetailFragment", mRepo.getLanguageOne());
+        Log.d("RepoDetailFragment", mRepo.getSize() + "");
 
         mNameLabel.setText(mRepo.getName());
         mCategoriesLabel.setText(mRepo.getLanguageOne());
