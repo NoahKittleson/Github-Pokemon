@@ -1,9 +1,9 @@
-#**Word Game**
+#**Github Pokemon**
 #### Created By Noah Kittleson
 
 ##**Description**
 
-Android Game App about taking randomly generated characters and making words from them.
+Android Game App about making your github repos to fight.
 
 ##**Disclaimer**
 _We do not own the images used in this web app._
