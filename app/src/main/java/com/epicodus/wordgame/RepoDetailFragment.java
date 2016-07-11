@@ -61,6 +61,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         mNameLabel.setText(mRepo.getName());
         mLanguageLabel.setText(mRepo.getLanguageOne());
         mSizeLabel.setText(Double.toString(mRepo.getSize()));
+        mUrlLabel.setOnClickListener(this);
 
         return view;
     }
@@ -68,8 +69,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v == mUrlLabel) {
-            Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mRepo.getUrlAddress()));
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mRepo.getUrlAddress()));
             startActivity(webIntent);
         }
     }
