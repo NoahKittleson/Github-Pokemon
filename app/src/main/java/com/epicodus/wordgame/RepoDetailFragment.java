@@ -20,14 +20,14 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class RepoDetailFragment extends Fragment {
-    @Bind(R.id.restaurantImageView) ImageView mImageLabel;
-    @Bind(R.id.restaurantNameTextView) TextView mNameLabel;
-    @Bind(R.id.cuisineTextView) TextView mCategoriesLabel;
-    @Bind(R.id.ratingTextView) TextView mRatingLabel;
-    @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
-    @Bind(R.id.phoneTextView) TextView mPhoneLabel;
-    @Bind(R.id.addressTextView) TextView mAddressLabel;
-    @Bind(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
+    @Bind(R.id.repoImageView) ImageView mImageLabel;
+    @Bind(R.id.repoNameTextView) TextView mNameLabel;
+    @Bind(R.id.languageTextView) TextView mLanguageLabel;
+    @Bind(R.id.sizeTextView) TextView mSizeLabel;
+    @Bind(R.id.urlTextView) TextView mUrlLabel;
+    //@Bind(R.id.phoneTextView) TextView mPhoneLabel;
+    //@Bind(R.id.addressTextView) TextView mAddressLabel;
+    //@Bind(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
 
     private Repo mRepo;
 
@@ -61,10 +61,8 @@ public class RepoDetailFragment extends Fragment {
         Log.d("RepoDetailFragment", mRepo.getSize() + "");
 
         mNameLabel.setText(mRepo.getName());
-        mCategoriesLabel.setText(mRepo.getLanguageOne());
-        mRatingLabel.setText(Double.toString(mRepo.getSize()));
-        //mPhoneLabel.setText(mRepo.getPhone());
-        //mAddressLabel.setText(android.text.TextUtils.join(", ", mRepo.getAddress()));
+        mLanguageLabel.setText(mRepo.getLanguageOne());
+        mSizeLabel.setText(Double.toString(mRepo.getSize()));
 
         return view;
     }
