@@ -1,6 +1,8 @@
 package com.epicodus.wordgame;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RepoDetailFragment extends Fragment {
+public class RepoDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.repoImageView) ImageView mImageLabel;
     @Bind(R.id.repoNameTextView) TextView mNameLabel;
     @Bind(R.id.languageTextView) TextView mLanguageLabel;
@@ -61,5 +63,14 @@ public class RepoDetailFragment extends Fragment {
         mSizeLabel.setText(Double.toString(mRepo.getSize()));
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mUrlLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mRepo.getUrlAddress()));
+            startActivity(webIntent);
+        }
     }
 }
