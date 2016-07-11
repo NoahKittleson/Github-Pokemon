@@ -48,8 +48,9 @@ public class GithubService {
                     int size = currentRepo.getInt("size");
                     String languagePrimary = currentRepo.getString("language");
                     //secondaryLanguage eventually....
+                    String urlAddress = currentRepo.getString("html_url");
 
-                    Repo repo = new Repo(name, size, languagePrimary, "");
+                    Repo repo = new Repo(name, size, languagePrimary, "", urlAddress);
                     repos.add(repo);
                 }
             }

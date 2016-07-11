@@ -26,8 +26,17 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start New Game"
+        android:text="View Github Repos"
         android:id="@+id/playButton"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="158dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:hint="Github Username"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

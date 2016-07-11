@@ -12,14 +12,16 @@ public class Repo {
     private int mSize;
     private String mLangPrimary;
     private String mLangSecondary;
+    private String mUrlAddress;
 
     public Repo () {}
 
-    public Repo (String name, int size, String lang1, String lang2) {
+    public Repo (String name, int size, String lang1, String lang2, String url) {
         this.mName = name;
         this.mSize = size;
         this.mLangPrimary = lang1;
         this.mLangSecondary = lang2;
+        this.mUrlAddress = url;
     }
 
     public String getLanguageTwo() {
@@ -37,6 +39,8 @@ public class Repo {
     public String getLanguageOne() {
         return mLangPrimary;
     }
+
+    public String getUrlAddress() { return  mUrlAddress; }
 
 
 }
