@@ -69,7 +69,7 @@ public class GameActivity extends AppCompatActivity /*implements View.OnClickLis
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-        getRepos("noahkittleson");
+        getRepos(username);
     }
 
 //    @Override
