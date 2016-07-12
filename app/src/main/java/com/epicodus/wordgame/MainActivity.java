@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mPlayButton) {
             String username = mEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
-            intent.putExtra("location", username);
+            intent.putExtra("username", username);
             startActivity(intent);
         }
     }
