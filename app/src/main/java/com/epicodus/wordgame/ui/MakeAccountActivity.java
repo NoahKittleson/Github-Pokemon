@@ -25,8 +25,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MakeAccountActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String TAG = MakeAccountActivity.class.getSimpleName();
-
     @Bind(R.id.createUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
@@ -60,6 +58,7 @@ public class MakeAccountActivity extends AppCompatActivity implements View.OnCli
             Intent intent = new Intent(MakeAccountActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            Log.d("MakeAccountActivity", "Got here!");
             finish();
         }
 
@@ -87,7 +86,6 @@ public class MakeAccountActivity extends AppCompatActivity implements View.OnCli
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         mAuthProgressDialog.dismiss();
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful!");
                             createFirebaseUserProfile(task.getResult().getUser());
                         } else {
                             Toast.makeText(MakeAccountActivity.this, "Authentication failed :(",
@@ -98,33 +96,32 @@ public class MakeAccountActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void createFirebaseUserProfile(final FirebaseUser user) {
-
         UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
                 .setDisplayName(mName)
                 .build();
 
-        user.updateProfile(addProfileName)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, user.getDisplayName());
-                        }
-                    }
-                });
+        user.updateProfile(addProfileName);
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//                            //shouldn't there be something here?
+//                        }
+//                    }
+//                });
     }
 
     private void createAuthStateListener() {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    Intent intent = new Intent(MakeAccountActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
+//                final FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user != null) {
+//                    Intent intent = new Intent(MakeAccountActivity.this, MainActivity.class);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                    startActivity(intent);
+//                    finish();
+//                }
             }
         };
     }
@@ -158,7 +155,7 @@ public class MakeAccountActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void createAuthProgressDialog() {
-        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog = new ProgressDialog(this, 1);
         mAuthProgressDialog.setTitle("Loading...");
         mAuthProgressDialog.setMessage("Authenticating with Firebase...");
         mAuthProgressDialog.setCancelable(false);
