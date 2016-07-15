@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".ui.GameActivity" />
         <activity android:name=".ui.ScoreActivity" />
-        <activity android:name=".ui.RepoDetailActivity"></activity>
+        <activity android:name=".ui.RepoDetailActivity" />
+        <activity android:name=".ui.MakeAccountActivity"></activity>
     </application>
 
 </manifest>
