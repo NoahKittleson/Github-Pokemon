@@ -5,4 +5,5 @@ package com.epicodus.wordgame;
  */
 public class Constants {
     public final static String apiKey = BuildConfig.API_KEY;
+    public final static String PREFERENCES_USERNAME_KEY = "username";
 }
