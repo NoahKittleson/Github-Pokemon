@@ -25,6 +25,7 @@ android {
 }
 
 dependencies {
+    compile 'com.google.firebase:firebase-auth:9.0.2'
     compile 'org.parceler:parceler-api:1.1.1'
     apt 'org.parceler:parceler:1.1.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -38,3 +39,5 @@ dependencies {
     compile 'se.akerfeldt:okhttp-signpost:1.1.0'
     compile 'com.android.support:support-v4:24.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

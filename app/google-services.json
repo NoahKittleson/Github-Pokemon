@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "824324513225",
+    "firebase_url": "https://github-pokemon.firebaseio.com",
+    "project_id": "github-pokemon",
+    "storage_bucket": "github-pokemon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824324513225:android:24319ecdca33fb5c",
+        "android_client_info": {
+          "package_name": "com.epicodus.wordgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824324513225-u9u4g7j387c38cps4f71h9hcijmrko1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.wordgame",
+            "certificate_hash": "EF5B5DA0D76065EE471FB6109F5935BAC6CBE261"
+          }
+        },
+        {
+          "client_id": "824324513225-cd8pd9ovrcso44i4gu2jmu5gpg4comep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsVe2Xslh-ChAi6WPOWvtircpgtdKYgDE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824324513225-cd8pd9ovrcso44i4gu2jmu5gpg4comep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
