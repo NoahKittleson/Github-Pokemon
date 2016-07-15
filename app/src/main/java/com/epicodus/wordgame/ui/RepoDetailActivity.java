@@ -1,8 +1,12 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.ui;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.epicodus.wordgame.R;
+import com.epicodus.wordgame.adapters.RepoPagerAdapter;
+import com.epicodus.wordgame.models.Repo;
 
 import org.parceler.Parcels;
 

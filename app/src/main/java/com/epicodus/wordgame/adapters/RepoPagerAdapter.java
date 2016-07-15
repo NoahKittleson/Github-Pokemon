@@ -1,4 +1,4 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.adapters;
 
 /**
  * Created by noahkittleson on 7/10/16.
@@ -7,6 +7,9 @@ package com.epicodus.wordgame;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.epicodus.wordgame.models.Repo;
+import com.epicodus.wordgame.ui.RepoDetailFragment;
 
 import java.util.ArrayList;
 

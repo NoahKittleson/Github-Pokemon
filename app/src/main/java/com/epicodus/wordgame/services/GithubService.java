@@ -1,5 +1,8 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.services;
 import android.util.Log;
+
+import com.epicodus.wordgame.Constants;
+import com.epicodus.wordgame.models.Repo;
 
 import org.json.JSONArray;
 import org.json.JSONException;

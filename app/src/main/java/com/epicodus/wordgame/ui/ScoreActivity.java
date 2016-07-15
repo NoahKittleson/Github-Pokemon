@@ -1,10 +1,12 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.epicodus.wordgame.R;
 
 import java.util.ArrayList;
 

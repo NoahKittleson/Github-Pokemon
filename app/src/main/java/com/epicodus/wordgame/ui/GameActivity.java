@@ -1,4 +1,4 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import com.epicodus.wordgame.R;
+import com.epicodus.wordgame.adapters.RepoListAdapter;
+import com.epicodus.wordgame.models.Repo;
+import com.epicodus.wordgame.services.GithubService;
 
 import java.io.IOException;
 import java.util.ArrayList;

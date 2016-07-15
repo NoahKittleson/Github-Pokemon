@@ -1,4 +1,4 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.models;
 
 /**
  * Created by noahkittleson on 7/8/16.

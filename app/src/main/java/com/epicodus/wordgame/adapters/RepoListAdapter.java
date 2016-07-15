@@ -1,4 +1,4 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.epicodus.wordgame.R;
+import com.epicodus.wordgame.models.Repo;
+import com.epicodus.wordgame.ui.RepoDetailActivity;
 
 import org.parceler.Parcels;
 
