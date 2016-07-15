@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 public class MakeAccountActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MakeAccountActivity.class.getSimpleName();
 
-    @Bind(R.id.createUserButton) Button mCreateUserButton;
+    @Bind(R.id.makeUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
