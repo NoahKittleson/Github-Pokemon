@@ -42,7 +42,7 @@ public class MakeAccountActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        setContentView(R.layout.activity_make_account);
         ButterKnife.bind(this);
 
         mLoginTextView.setOnClickListener(this);
