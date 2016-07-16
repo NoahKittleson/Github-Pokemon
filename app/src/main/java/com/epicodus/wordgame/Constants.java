@@ -6,4 +6,5 @@ package com.epicodus.wordgame;
 public class Constants {
     public final static String apiKey = BuildConfig.API_KEY;
     public final static String PREFERENCES_USERNAME_KEY = "username";
+    public final static String FIREBASE_CHILD_REPOS = "repos";
 }

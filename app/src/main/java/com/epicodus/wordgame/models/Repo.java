@@ -13,6 +13,7 @@ public class Repo {
     private String mLangPrimary;
     private String mLangSecondary;
     private String mUrlAddress;
+    private String pushId;
 
     public Repo () {}
 
@@ -41,6 +42,14 @@ public class Repo {
     }
 
     public String getUrlAddress() { return  mUrlAddress; }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 
 
 }
