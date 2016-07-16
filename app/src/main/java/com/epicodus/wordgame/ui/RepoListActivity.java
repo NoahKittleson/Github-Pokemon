@@ -35,7 +35,6 @@ public class RepoListActivity extends AppCompatActivity /*implements View.OnClic
     public ArrayList<Repo> mRepos = new ArrayList<>();
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
-    private String mRecentUsername;
 
     void getRepos (String username) {
         final GithubService githubService = new GithubService();
@@ -79,9 +78,6 @@ public class RepoListActivity extends AppCompatActivity /*implements View.OnClic
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
         ButterKnife.bind(this);
-
-        //mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //mEditor = mSharedPreferences.edit();
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
