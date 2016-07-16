@@ -67,7 +67,7 @@ public class RepoListAdapter extends RecyclerView.Adapter<RepoListAdapter.RepoVi
         public void bindRepo(Repo repo) {
             mNameTextView.setText(repo.getName());
             mLanguageTextView.setText(repo.getLanguageOne());
-            mSizeTextView.setText("Size: " + repo.getSize());
+            mSizeTextView.setText("Size: " + repo.getSize() + "Kb");
         }
 
         @Override
