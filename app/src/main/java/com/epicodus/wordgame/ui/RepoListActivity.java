@@ -13,11 +13,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.TextView;
 
 import com.epicodus.wordgame.Constants;
 import com.epicodus.wordgame.R;
@@ -34,7 +29,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class GameActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
+public class RepoListActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RepoListAdapter mAdapter;
     public ArrayList<Repo> mRepos = new ArrayList<>();
@@ -59,14 +54,14 @@ public class GameActivity extends AppCompatActivity /*implements View.OnClickLis
                     Log.d("Game Activity: ", mRepos.get(i).getName());
                 }
 
-                GameActivity.this.runOnUiThread(new Runnable() {
+                RepoListActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
                         Log.d("Game Activity: ", "got to RUN");
                         mAdapter = new RepoListAdapter(getApplicationContext(), mRepos);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GameActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RepoListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
@@ -85,8 +80,8 @@ public class GameActivity extends AppCompatActivity /*implements View.OnClickLis
         inflater.inflate(R.menu.menu_search, menu);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+        //mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mEditor = mSharedPreferences.edit();
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
@@ -119,9 +114,12 @@ public class GameActivity extends AppCompatActivity /*implements View.OnClickLis
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-        //addToSharedPreferences(username);
+        addToSharedPreferences(username);
         getRepos(username);
     }
 
@@ -133,7 +131,7 @@ public class GameActivity extends AppCompatActivity /*implements View.OnClickLis
 //            submittedWords.add(word);
 //        }
 //        else if (v == mScoreButton) {
-//            Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
+//            Intent intent = new Intent(RepoListActivity.this, ScoreActivity.class);
 //            intent.putExtra("submittedWords", submittedWords);
 //            startActivity(intent);
 //        }
