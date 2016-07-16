@@ -65,12 +65,11 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.fragment_repo_detail, container, false);
         ButterKnife.bind(this, view);
 
-        //Picasso.with(view.getContext()).load(mRepo.getImageUrl()).into(mImageLabel);
-
         mNameLabel.setText(mRepo.getName());
         mLanguageLabel.setText(mRepo.getLanguageOne());
-        mSizeLabel.setText(Double.toString(mRepo.getSize()));
+        mSizeLabel.setText(mRepo.getSize() + " Kb");
         mUrlLabel.setOnClickListener(this);
+        mSaveRepoButton.setOnClickListener(this);
 
         return view;
     }
