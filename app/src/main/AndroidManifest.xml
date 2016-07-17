@@ -22,7 +22,7 @@
         <activity android:name=".ui.RepoDetailActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.MakeAccountActivity" />
-        <activity android:name=".TeamActivity"></activity>
+        <activity android:name=".ui.TeamActivity"></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.epicodus.wordgame.Constants;
 import com.epicodus.wordgame.R;
+import com.epicodus.wordgame.adapters.FirebaseRepoViewHolder;
 import com.epicodus.wordgame.models.Repo;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,13 +30,13 @@ public class TeamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_team);
+        setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mRestaurantReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS).child(uid);
+        mRestaurantReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPOS).child(uid);
         setUpFirebaseAdapter();
     }
 

@@ -92,6 +92,9 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
             pushRef.setValue(mRepo);
 
             Toast.makeText(getContext(), "Added to Team", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getActivity(), TeamActivity.class);
+            startActivity(intent);
         }
     }
 }
