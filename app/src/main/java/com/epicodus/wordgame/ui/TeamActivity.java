@@ -1,10 +1,12 @@
-package com.epicodus.wordgame;
+package com.epicodus.wordgame.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.epicodus.wordgame.Constants;
+import com.epicodus.wordgame.R;
 import com.epicodus.wordgame.models.Repo;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
