@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.epicodus.wordgame.Constants;
 import com.epicodus.wordgame.R;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
 
 
 public class TeamActivity extends AppCompatActivity {
-    private DatabaseReference mRestaurantReference;
+    private DatabaseReference mRepoReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -36,18 +37,19 @@ public class TeamActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mRestaurantReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPOS).child(uid);
+        mRepoReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPOS).child(uid);
         setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Repo, FirebaseRepoViewHolder>
                 (Repo.class, R.layout.repo_list_item, FirebaseRepoViewHolder.class,
-                        mRestaurantReference) {
+                        mRepoReference) {
 
             @Override
             protected void populateViewHolder(FirebaseRepoViewHolder viewHolder,
                                               Repo model, int position) {
+                Log.d("TEAMACTIVITY", model.getName());
                 viewHolder.bindRepo(model);
             }
         };

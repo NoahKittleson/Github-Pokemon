@@ -66,7 +66,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         ButterKnife.bind(this, view);
 
         mNameLabel.setText(mRepo.getName());
-        mLanguageLabel.setText(mRepo.getLanguageOne());
+        mLanguageLabel.setText(mRepo.getLangPrimary());
         mSizeLabel.setText(mRepo.getSize() + " Kb");
         mUrlLabel.setOnClickListener(this);
         mSaveRepoButton.setOnClickListener(this);

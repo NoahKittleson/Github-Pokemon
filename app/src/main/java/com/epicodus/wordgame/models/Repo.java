@@ -8,40 +8,61 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Repo {
-    private String mName;
-    private int mSize;
-    private String mLangPrimary;
-    private String mLangSecondary;
-    private String mUrlAddress;
+    private String Name;
+    private int Size;
+    private String LangPrimary;
+    private String LangSecondary;
+    private String UrlAddress;
     private String pushId;
 
     public Repo () {}
 
     public Repo (String name, int size, String lang1, String lang2, String url) {
-        this.mName = name;
-        this.mSize = size;
-        this.mLangPrimary = lang1;
-        this.mLangSecondary = lang2;
-        this.mUrlAddress = url;
+        this.Name = name;
+        this.Size = size;
+        this.LangPrimary = lang1;
+        this.LangSecondary = lang2;
+        this.UrlAddress = url;
     }
-
-    public String getLanguageTwo() {
-        return mLangSecondary;
-    }
-
     public String getName() {
-        return mName;
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 
     public int getSize() {
-        return mSize;
+        return Size;
     }
 
-    public String getLanguageOne() {
-        return mLangPrimary;
+    public void setSize(int size) {
+        Size = size;
     }
 
-    public String getUrlAddress() { return  mUrlAddress; }
+    public String getLangPrimary() {
+        return LangPrimary;
+    }
+
+    public void setLangPrimary(String langPrimary) {
+        LangPrimary = langPrimary;
+    }
+
+    public String getLangSecondary() {
+        return LangSecondary;
+    }
+
+    public void setLangSecondary(String langSecondary) {
+        LangSecondary = langSecondary;
+    }
+
+    public String getUrlAddress() {
+        return UrlAddress;
+    }
+
+    public void setUrlAddress(String urlAddress) {
+        UrlAddress = urlAddress;
+    }
 
     public String getPushId() {
         return pushId;
@@ -50,6 +71,5 @@ public class Repo {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
-
 
 }

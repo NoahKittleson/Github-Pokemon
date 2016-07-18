@@ -42,14 +42,14 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     public void bindRepo(Repo repo) {
-        ImageView repoImageView = (ImageView) mView.findViewById(R.id.repoImageView);
+        //ImageView repoImageView = (ImageView) mView.findViewById(R.id.repoImageView);
         TextView languageTextView = (TextView) mView.findViewById(R.id.languageTextView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.repoNameTextView);
         TextView sizeTextView = (TextView) mView.findViewById(R.id.sizeTextView);
 
         //Picasso.with(mContext).load(repo.getImageUrl()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
         nameTextView.setText(repo.getName());
-        languageTextView.setText(repo.getLanguageOne());
+        languageTextView.setText(repo.getLangPrimary());
         sizeTextView.setText("Size: " + repo.getSize() + "Kb");
     }
 
