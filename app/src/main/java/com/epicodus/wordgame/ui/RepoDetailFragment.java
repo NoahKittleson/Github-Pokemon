@@ -23,7 +23,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
@@ -70,7 +69,6 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
                 .getReference(Constants.FIREBASE_CHILD_REPOS)
                 .child(uid);
         attachDatabaseListener();
-
     }
 
     @Override
