@@ -44,6 +44,8 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
 
     private Repo mRepo;
     private Boolean mTeamFull;
+    private DatabaseReference mRepoRef;
+    ChildEventListener mEventListener;
 
     public RepoDetailFragment() {
 
@@ -62,6 +64,13 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mRepo = Parcels.unwrap(getArguments().getParcelable("repo"));
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mRepoRef = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_REPOS)
+                .child(uid);
+        attachDatabaseListener();
+
     }
 
     @Override
@@ -74,7 +83,6 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         mSizeLabel.setText(mRepo.getSize() + " Kb");
         mUrlLabel.setOnClickListener(this);
         mSaveRepoButton.setOnClickListener(this);
-        attachDatabaseListener();
 
         return view;
     }
@@ -86,34 +94,29 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
             startActivity(webIntent);
         }
         if (v == mSaveRepoButton) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String uid = user.getUid();
-            DatabaseReference repoRef = FirebaseDatabase.getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_REPOS)
-                    .child(uid);
-            DatabaseReference pushRef = repoRef.push();
+            if (!mTeamFull) {
+                DatabaseReference pushRef = mRepoRef.push();
+                String pushId = pushRef.getKey();
+                mRepo.setPushId(pushId);
+                pushRef.setValue(mRepo);
 
-            String pushId = pushRef.getKey();
-            mRepo.setPushId(pushId);
-            pushRef.setValue(mRepo);
+                Toast.makeText(getContext(), "Added to Team", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(getContext(), "Added to Team", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), TeamActivity.class);
+                startActivity(intent);
+            } else {
+                //error: cannot add more teamMembers!
+                Toast.makeText(getContext(), "Team is Full. Not Added.", Toast.LENGTH_SHORT).show();
+            }
 
-            Intent intent = new Intent(getActivity(), TeamActivity.class);
-            startActivity(intent);
         }
     }
 
     private void attachDatabaseListener () {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        DatabaseReference repoRef = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_REPOS)
-                .child(uid);
-        repoRef.addChildEventListener(new ChildEventListener() {
+        mEventListener = mRepoRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                if (snapshot.getChildrenCount() > 6) {
+                if (snapshot.getChildrenCount() >= 6) {
                     mTeamFull = true;
                 }
             }
@@ -141,4 +144,11 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
             }
         });
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mRepoRef.removeEventListener(mEventListener);
+    }
+
 }
