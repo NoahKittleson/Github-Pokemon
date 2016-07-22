@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.playButton) Button mPlayButton;
     @Bind(R.id.editText) EditText mEditText;
+    @Bind(R.id.teamButton) Button mTeamButton;
 
     SharedPreferences mSharedPreferences;
     private String mRecentUsername;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mPlayButton.setOnClickListener(this);
+        mTeamButton.setOnClickListener(this);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentUsername = mSharedPreferences.getString(Constants.PREFERENCES_USERNAME_KEY, null);
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String username = mEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, RepoListActivity.class);
             intent.putExtra("username", username);
+            startActivity(intent);
+        }
+        if (v == mTeamButton) {
+            Intent intent = new Intent(MainActivity.this, TeamActivity.class);
             startActivity(intent);
         }
     }

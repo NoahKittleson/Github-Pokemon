@@ -18,8 +18,12 @@ import com.epicodus.wordgame.models.Repo;
 import com.epicodus.wordgame.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
@@ -36,11 +40,10 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.languageTextView) TextView mLanguageLabel;
     @Bind(R.id.sizeTextView) TextView mSizeLabel;
     @Bind(R.id.urlTextView) TextView mUrlLabel;
-    //@Bind(R.id.phoneTextView) TextView mPhoneLabel;
-    //@Bind(R.id.addressTextView) TextView mAddressLabel;
     @Bind(R.id.saveRepoButton) TextView mSaveRepoButton;
 
     private Repo mRepo;
+    private Boolean mTeamFull;
 
     public RepoDetailFragment() {
 
@@ -51,6 +54,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         Bundle args = new Bundle();
         args.putParcelable("repo", Parcels.wrap(repo));
         repoDetailFragment.setArguments(args);
+
         return repoDetailFragment;
     }
 
@@ -70,6 +74,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         mSizeLabel.setText(mRepo.getSize() + " Kb");
         mUrlLabel.setOnClickListener(this);
         mSaveRepoButton.setOnClickListener(this);
+        attachDatabaseListener();
 
         return view;
     }
@@ -87,6 +92,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
                     .getReference(Constants.FIREBASE_CHILD_REPOS)
                     .child(uid);
             DatabaseReference pushRef = repoRef.push();
+
             String pushId = pushRef.getKey();
             mRepo.setPushId(pushId);
             pushRef.setValue(mRepo);
@@ -96,5 +102,43 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
             Intent intent = new Intent(getActivity(), TeamActivity.class);
             startActivity(intent);
         }
+    }
+
+    private void attachDatabaseListener () {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference repoRef = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_REPOS)
+                .child(uid);
+        repoRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                if (snapshot.getChildrenCount() > 6) {
+                    mTeamFull = true;
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount() < 6) {
+                    mTeamFull = false;
+                }
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

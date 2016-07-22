@@ -3,6 +3,7 @@ package com.epicodus.wordgame.ui;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.epicodus.wordgame.R;
 import com.epicodus.wordgame.adapters.RepoPagerAdapter;
@@ -27,6 +28,7 @@ public class RepoDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mRepos = Parcels.unwrap(getIntent().getParcelableExtra("repos"));
+        Log.d("RepoDetailActivity", mRepos.size() + "");
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
 
         adapterViewPager = new RepoPagerAdapter(getSupportFragmentManager(), mRepos);
