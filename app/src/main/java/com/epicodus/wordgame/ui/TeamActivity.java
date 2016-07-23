@@ -9,6 +9,7 @@ import android.util.Log;
 import com.epicodus.wordgame.Constants;
 import com.epicodus.wordgame.R;
 import com.epicodus.wordgame.adapters.FirebaseRepoViewHolder;
+import com.epicodus.wordgame.models.Pokemon;
 import com.epicodus.wordgame.models.Repo;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,15 +43,15 @@ public class TeamActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Repo, FirebaseRepoViewHolder>
-                (Repo.class, R.layout.repo_list_item, FirebaseRepoViewHolder.class,
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Pokemon, FirebaseRepoViewHolder>
+                (Pokemon.class, R.layout.repo_list_item, FirebaseRepoViewHolder.class,
                         mRepoReference) {
 
             @Override
             protected void populateViewHolder(FirebaseRepoViewHolder viewHolder,
-                                              Repo model, int position) {
+                                              Pokemon model, int position) {
                 Log.d("TEAMACTIVITY", model.getName());
-                viewHolder.bindRepo(model);
+                viewHolder.bindPokemon(model);
             }
         };
         mRecyclerView.setHasFixedSize(true);

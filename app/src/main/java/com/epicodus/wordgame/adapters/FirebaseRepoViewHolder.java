@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -42,16 +43,16 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
         itemView.setOnClickListener(this);
     }
 
-    public void bindRepo(Repo repo) {
-        //ImageView repoImageView = (ImageView) mView.findViewById(R.id.repoImageView);
+    public void bindPokemon(Pokemon pokemon) {
+        ImageView repoImageView = (ImageView) mView.findViewById(R.id.repoImageView);
         TextView languageTextView = (TextView) mView.findViewById(R.id.languageTextView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.repoNameTextView);
         TextView sizeTextView = (TextView) mView.findViewById(R.id.sizeTextView);
 
-        //Picasso.with(mContext).load(repo.getImageUrl()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
-        nameTextView.setText(repo.getName());
-        languageTextView.setText(repo.getLangPrimary());
-        sizeTextView.setText("Size: " + repo.getSize() + "Kb");
+        Picasso.with(mContext).load(pokemon.getImgURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
+        nameTextView.setText(pokemon.getName());
+        languageTextView.setText(pokemon.getTypePrimary());
+        sizeTextView.setText("Size: " + pokemon.getHP() + "HP");
     }
 
     @Override
