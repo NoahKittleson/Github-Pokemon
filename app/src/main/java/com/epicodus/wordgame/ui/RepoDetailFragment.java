@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.wordgame.R;
+import com.epicodus.wordgame.models.Pokemon;
 import com.epicodus.wordgame.models.Repo;
 import com.epicodus.wordgame.Constants;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,7 +43,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.saveRepoButton) TextView mSaveRepoButton;
 
     private Repo mRepo;
-    private Boolean mTeamFull;
+    private Boolean mTeamFull = false;
     private DatabaseReference mRepoRef;
     ChildEventListener mEventListener;
 
@@ -96,7 +97,7 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
                 DatabaseReference pushRef = mRepoRef.push();
                 String pushId = pushRef.getKey();
                 mRepo.setPushId(pushId);
-                pushRef.setValue(mRepo);
+                pushRef.setValue(new Pokemon(mRepo));
 
                 Toast.makeText(getContext(), "Added to Team", Toast.LENGTH_SHORT).show();
 

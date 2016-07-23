@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.epicodus.wordgame.Constants;
 import com.epicodus.wordgame.R;
+import com.epicodus.wordgame.models.Pokemon;
 import com.epicodus.wordgame.models.Repo;
 import com.epicodus.wordgame.ui.RepoDetailActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,7 +56,7 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
 
     @Override
     public void onClick(View view) {
-        final ArrayList<Repo> restaurants = new ArrayList<>();
+        final ArrayList<Pokemon> pokemen = new ArrayList<>();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
@@ -68,14 +69,14 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    restaurants.add(snapshot.getValue(Repo.class));
+                    pokemen.add(snapshot.getValue(Pokemon.class));
                 }
-                Log.d("RestaurantViewHolder", restaurants.size() + "");
+                Log.d("RepoViewHolder", pokemen.size() + "");
                 int itemPosition = getLayoutPosition();
 
                 Intent intent = new Intent(mContext, RepoDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
-                intent.putExtra("restaurants", Parcels.wrap(restaurants));
+                intent.putExtra("repos", Parcels.wrap(pokemen));
 
                 mContext.startActivity(intent);
             }
