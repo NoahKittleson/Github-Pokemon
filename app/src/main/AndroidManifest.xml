@@ -23,7 +23,8 @@
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.MakeAccountActivity" />
         <activity android:name=".ui.TeamActivity" />
-        <activity android:name=".ui.ChooseOpponentActivity"></activity>
+        <activity android:name=".ui.ChooseOpponentActivity" />
+        <activity android:name=".ui.BattleActivity"></activity>
     </application>
 
 </manifest>
