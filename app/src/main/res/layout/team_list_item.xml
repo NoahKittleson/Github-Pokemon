@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="130dp"
         android:layout_height="100dp"
-        android:id="@+id/repoImageView"
+        android:id="@+id/pokemonImageView"
         android:src="@drawable/background"
         android:scaleType="centerCrop"/>
 
@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/repoNameTextView"
+            android:id="@+id/pokemonNameTextView"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Pokémon Name"
@@ -30,8 +30,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Language of Pokemon"
-            android:id="@+id/languageTextView"
+            android:text="Type of Pokemon"
+            android:id="@+id/typeTextView"
             android:layout_below="@+id/repoNameTextView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

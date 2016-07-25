@@ -44,16 +44,43 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     public void bindPokemon(Pokemon pokemon) {
-        ImageView repoImageView = (ImageView) mView.findViewById(R.id.repoImageView);
-        TextView languageTextView = (TextView) mView.findViewById(R.id.languageTextView);
-        TextView nameTextView = (TextView) mView.findViewById(R.id.repoNameTextView);
-        TextView sizeTextView = (TextView) mView.findViewById(R.id.sizeTextView);
+        ImageView pokemonImageView = (ImageView) mView.findViewById(R.id.pokemonImageView);
+        TextView typeTextView = (TextView) mView.findViewById(R.id.typeTextView);
+        TextView nameTextView = (TextView) mView.findViewById(R.id.pokemonNameTextView);
+        TextView healthTextView = (TextView) mView.findViewById(R.id.hpTextView);
 
         //Picasso.with(mContext).load(pokemon.getImgURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
-        Picasso.with(mContext).load(R.drawable.java).into(repoImageView);
+        chooseImage(pokemon, pokemonImageView);
+        //Picasso.with(mContext).load(R.drawable.java).into(pokemonImageView);
         nameTextView.setText(pokemon.getName());
-        languageTextView.setText(pokemon.getTypePrimary());
-        sizeTextView.setText("Size: " + pokemon.getHP() + "HP");
+        typeTextView.setText(pokemon.getTypePrimary());
+        healthTextView.setText("Size: " + pokemon.getHP() + "HP");
+    }
+
+    private void chooseImage(Pokemon pokemon, ImageView imgView) {
+        switch (pokemon.getTypePrimary().toLowerCase()) {
+            case "java": Picasso.with(mContext).load(R.drawable.java).into(imgView);
+                break;
+            case "c++": Picasso.with(mContext).load(R.drawable.cplusplus).into(imgView);
+                break;
+            case "c#": Picasso.with(mContext).load(R.drawable.csharp).into(imgView);
+                break;
+            case "ruby": Picasso.with(mContext).load(R.drawable.ruby).into(imgView);
+                break;
+            case "html": Picasso.with(mContext).load(R.drawable.html).into(imgView);
+                break;
+            case "sql": Picasso.with(mContext).load(R.drawable.sql).into(imgView);
+                break;
+            case "php": Picasso.with(mContext).load(R.drawable.php).into(imgView);
+                break;
+            case "javascript": Picasso.with(mContext).load(R.drawable.javascript).into(imgView);
+                break;
+            case "python": Picasso.with(mContext).load(R.drawable.python).into(imgView);
+                break;
+            default: Picasso.with(mContext).load(R.drawable.missingno).into(imgView);
+                break;
+
+        }
     }
 
     @Override
