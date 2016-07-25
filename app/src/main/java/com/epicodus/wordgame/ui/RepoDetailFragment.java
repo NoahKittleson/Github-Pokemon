@@ -115,14 +115,14 @@ public class RepoDetailFragment extends Fragment implements View.OnClickListener
         mEventListener = mRepoRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                if (snapshot.getChildrenCount() >= 6) {
-                    mTeamFull = true;
-                }
+//                if (snapshot.getChildrenCount() >= 6) {
+//                    mTeamFull = true;
+//                }
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+            public void onChildChanged(DataSnapshot snapshot, String s) {
+                mTeamFull = snapshot.getChildrenCount() >= 6;
             }
 
             @Override
