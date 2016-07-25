@@ -1,5 +1,6 @@
 package com.epicodus.wordgame.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -72,5 +73,8 @@ public class TeamActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Toast.makeText(this, "Battle system not made yet.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(TeamActivity.this, BattleActivity.class);
+        intent.putExtra("OpponentID", "ztTVLCFicKgpar5rhNIjl2c7W1w1");
+        startActivity(intent);
     }
 }
