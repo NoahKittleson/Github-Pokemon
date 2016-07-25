@@ -49,9 +49,7 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
         TextView nameTextView = (TextView) mView.findViewById(R.id.pokemonNameTextView);
         TextView healthTextView = (TextView) mView.findViewById(R.id.hpTextView);
 
-        //Picasso.with(mContext).load(pokemon.getImgURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
         chooseImage(pokemon, pokemonImageView);
-        //Picasso.with(mContext).load(R.drawable.java).into(pokemonImageView);
         nameTextView.setText(pokemon.getName());
         typeTextView.setText(pokemon.getTypePrimary());
         healthTextView.setText("Size: " + pokemon.getHP() + "HP");
@@ -85,35 +83,35 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
 
     @Override
     public void onClick(View view) {
-        final ArrayList<Pokemon> pokemen = new ArrayList<>();
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        DatabaseReference ref = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_REPOS)
-                .child(uid);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    pokemen.add(snapshot.getValue(Pokemon.class));
-                }
-                Log.d("RepoViewHolder", pokemen.size() + "");
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, RepoDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("repos", Parcels.wrap(pokemen));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        final ArrayList<Pokemon> pokemen = new ArrayList<>();
+//
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//
+//        DatabaseReference ref = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_REPOS)
+//                .child(uid);
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    pokemen.add(snapshot.getValue(Pokemon.class));
+//                }
+//                Log.d("RepoViewHolder", pokemen.size() + "");
+//                int itemPosition = getLayoutPosition();
+//
+//                Intent intent = new Intent(mContext, RepoDetailActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("pokemon", Parcels.wrap(pokemen));
+//
+//                mContext.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 }
