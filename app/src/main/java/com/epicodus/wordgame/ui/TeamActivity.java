@@ -44,7 +44,7 @@ public class TeamActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Pokemon, FirebaseRepoViewHolder>
-                (Pokemon.class, R.layout.repo_list_item, FirebaseRepoViewHolder.class,
+                (Pokemon.class, R.layout.team_list_item, FirebaseRepoViewHolder.class,
                         mRepoReference) {
 
             @Override

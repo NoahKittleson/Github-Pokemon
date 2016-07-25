@@ -49,7 +49,8 @@ public class FirebaseRepoViewHolder extends RecyclerView.ViewHolder implements V
         TextView nameTextView = (TextView) mView.findViewById(R.id.repoNameTextView);
         TextView sizeTextView = (TextView) mView.findViewById(R.id.sizeTextView);
 
-        Picasso.with(mContext).load(pokemon.getImgURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
+        //Picasso.with(mContext).load(pokemon.getImgURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(repoImageView);
+        Picasso.with(mContext).load(R.drawable.java).into(repoImageView);
         nameTextView.setText(pokemon.getName());
         languageTextView.setText(pokemon.getTypePrimary());
         sizeTextView.setText("Size: " + pokemon.getHP() + "HP");

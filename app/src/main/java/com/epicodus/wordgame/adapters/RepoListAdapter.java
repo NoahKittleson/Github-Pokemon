@@ -50,7 +50,6 @@ public class RepoListAdapter extends RecyclerView.Adapter<RepoListAdapter.RepoVi
     }
 
     public class RepoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @Bind(R.id.repoImageView) ImageView mImageTextView;
         @Bind(R.id.repoNameTextView) TextView mNameTextView;
         @Bind(R.id.languageTextView) TextView mLanguageTextView;
         @Bind(R.id.sizeTextView) TextView mSizeTextView;
