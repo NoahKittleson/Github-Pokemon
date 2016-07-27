@@ -32,5 +32,7 @@ public class BattleActivity extends AppCompatActivity {
         mOpponentRef = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_REPOS)
                 .child(OpponentID);
+
+
     }
 }
