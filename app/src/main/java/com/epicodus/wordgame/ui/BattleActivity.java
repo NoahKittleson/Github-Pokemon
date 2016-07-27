@@ -33,6 +33,5 @@ public class BattleActivity extends AppCompatActivity {
                 .getReference(Constants.FIREBASE_CHILD_REPOS)
                 .child(OpponentID);
 
-
     }
 }

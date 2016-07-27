@@ -45,6 +45,7 @@ public class TeamActivity extends AppCompatActivity implements View.OnClickListe
 
         mRepoReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPOS).child(uid);
         setUpFirebaseAdapter();
+        mBattleButton.setOnClickListener(this);
     }
 
     private void setUpFirebaseAdapter() {
@@ -72,7 +73,7 @@ public class TeamActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(this, "Battle system not made yet.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Battle system not made yet.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(TeamActivity.this, BattleActivity.class);
         intent.putExtra("OpponentID", "ztTVLCFicKgpar5rhNIjl2c7W1w1");
         startActivity(intent);
